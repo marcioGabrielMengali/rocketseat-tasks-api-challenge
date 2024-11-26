@@ -3,5 +3,6 @@ export const getTaksks = (req, res) => {
 }
 
 export const createTask = (req, res) => {
+    console.log({body: req.body});
     return res.writeHead(201).end('createTasks')
 }
