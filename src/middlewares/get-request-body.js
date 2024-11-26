@@ -8,9 +8,11 @@ export const getRequestBody = async (req, res) => {
     if (buffers.length > 0) {
       try {
         req.body = JSON.parse(Buffer.concat(buffers).toString());
+        return
       } catch (error) {
         req.body = null;
       }
     }
+    req.body = null
   }
 };
