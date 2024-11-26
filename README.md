@@ -21,7 +21,6 @@ Create an api to do CRUD operations for taks.
 ## How to run the project
 
 ### 1. Install the packages
-
 ```shell
 npm i
 ```
