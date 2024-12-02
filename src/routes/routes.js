@@ -1,5 +1,5 @@
 import { buildPathParameters } from "../utils/path-parameters.js";
-import { createTask, getTaksks, updateTask } from "./handlers.js";
+import { createTask, deleteTask, getTaksks, updateTask } from "./handlers.js";
 
 const URL = "/tasks";
 
@@ -18,5 +18,10 @@ export const routes = [
     url: buildPathParameters(`${URL}/:id`),
     method: "PUT",
     handler: updateTask,
+  },
+  {
+    url: buildPathParameters(`${URL}/:id`),
+    method: "DELETE",
+    handler: deleteTask,
   }
 ];

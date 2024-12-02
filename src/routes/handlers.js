@@ -40,12 +40,23 @@ export const updateTask = (req, res) => {
       updated_at: getCurrentDate(),
     };
     const updated = repository.update(TABLE_NAME, id, data);
-    if(!updated){
-      res.writeHead(400).end('Id not found')
-    }else{
-      res.writeHead(204).end()
+    if (!updated) {
+      res.writeHead(400).end("Id not found");
+    } else {
+      res.writeHead(204).end();
     }
   } else {
     return res.writeHead(400).end("Bad Request");
+  }
+};
+
+export const deleteTask = (req, res) => {
+  const { id } = req.params;
+  const deleted = repository.delete(TABLE_NAME, id);
+  if (!deleted) {
+    console.log('deleted');
+    res.writeHead(400).end("Id not found");
+  } else {
+    res.writeHead(204).end();
   }
 };
