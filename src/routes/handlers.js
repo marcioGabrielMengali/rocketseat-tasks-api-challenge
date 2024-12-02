@@ -12,19 +12,39 @@ export const getTaksks = (req, res) => {
 };
 
 export const createTask = (req, res) => {
-  const validation = bodyValidation(req.body);
+  const { body } = req;
+  const validation = bodyValidation(body);
   if (validation) {
-    const { body } = req;
     const data = {
       id: crypto.randomUUID(),
       ...body,
-      created_at: getCurrentDate(),
       completed_at: null,
       updated_at: null,
+      created_at: getCurrentDate(),
     };
 
     repository.insert(TABLE_NAME, data);
     return res.writeHead(201).end();
+  } else {
+    return res.writeHead(400).end("Bad Request");
+  }
+};
+
+export const updateTask = (req, res) => {
+  const { body } = req;
+  const validation = bodyValidation(body);
+  if (validation) {
+    const { id } = req.params;
+    const data = {
+      ...req.body,
+      updated_at: getCurrentDate(),
+    };
+    const updated = repository.update(TABLE_NAME, id, data);
+    if(!updated){
+      res.writeHead(400).end('Id not found')
+    }else{
+      res.writeHead(204).end()
+    }
   } else {
     return res.writeHead(400).end("Bad Request");
   }

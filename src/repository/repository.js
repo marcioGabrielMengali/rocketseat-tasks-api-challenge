@@ -27,4 +27,22 @@ export class Repository {
     }
     this.#persist();
   }
+
+  update(table, id, data) {
+    const rowIndex = this.#database[table].findIndex((row) => row.id === id);
+    if (rowIndex > -1) {
+      console.log(this.#database[table][rowIndex]);
+      const { id, created_at, completed_at } = this.#database[table][rowIndex];
+      const updatedData = {
+        id,
+        ...data,
+        created_at,
+        completed_at,
+      };
+      this.#database[table][rowIndex] = updatedData;
+      this.#persist();
+      return true;
+    }
+    return false;
+  }
 }
