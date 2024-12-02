@@ -5,6 +5,10 @@
 - [Node Version](#node-version)
 - [How to run](#introduction)
     - [Install Packeges](#1-install-the-packages)
+    - [Run The Server](#2-run-the-server`)
+- [Routes](#routes)
+    - [GET](#get)
+    - [POST](#post)
 
 ## Introduction
 ```
@@ -31,3 +35,22 @@ npm run server
 ```
 
 ## Routes
+
+### Get
+```shell
+curl --request GET \
+  --url http://localhost:3333/tasks \
+  --header 'User-Agent: insomnia/10.2.0'
+```
+
+### Post
+```shell
+curl --request POST \
+  --url http://localhost:3333/tasks \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/10.1.1' \
+  --data '{
+	"title": "fazer api",
+	"description": "criar tasks api do desafio da rocketseat"
+}'
+```
