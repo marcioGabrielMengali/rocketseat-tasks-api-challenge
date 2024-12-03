@@ -54,9 +54,19 @@ export const deleteTask = (req, res) => {
   const { id } = req.params;
   const deleted = repository.delete(TABLE_NAME, id);
   if (!deleted) {
-    console.log('deleted');
     res.writeHead(400).end("Id not found");
   } else {
     res.writeHead(204).end();
   }
 };
+
+
+export const completeTask = (req, res) => {
+  const { id } = req.params
+  const completed = repository.updateCompletedAt(TABLE_NAME, id);
+  if (!completed) {
+    res.writeHead(400).end("Id not found");
+  } else {
+    res.writeHead(204).end();
+  }
+}
