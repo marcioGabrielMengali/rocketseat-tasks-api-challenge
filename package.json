@@ -7,7 +7,8 @@
   },
   "type": "module",
   "scripts": {
-    "server": "node --watch --env-file=.env src/server.js"
+    "server": "node --watch --env-file=.env src/server.js",
+    "upload": "node upload-csv.js"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +16,8 @@
   "description": "",
   "dependencies": {
     "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "csv-parse": "^5.6.0"
   }
 }

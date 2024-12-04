@@ -6,6 +6,7 @@
 - [How to run](#introduction)
   - [Install Packeges](#1-install-the-packages)
   - [Run The Server](#2-run-the-server`)
+  - [Upload CSV](#3-upload-csv`)
 - [Routes](#routes)
   - [GET](#get)
   - [POST](#post)
@@ -39,6 +40,12 @@ npm i
 
 ```shell
 npm run server
+```
+
+### 3. upload csv
+
+```shell
+npm run upload
 ```
 
 ## Routes

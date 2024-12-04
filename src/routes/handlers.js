@@ -13,6 +13,7 @@ export const getTaksks = (req, res) => {
 
 export const createTask = (req, res) => {
   const { body } = req;
+  console.log('createTask', body);
   const validation = bodyValidation(body);
   if (validation) {
     const data = {
