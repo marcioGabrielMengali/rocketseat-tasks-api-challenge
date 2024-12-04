@@ -8,10 +8,14 @@ const server = http.createServer(async (req, res) => {
   const { url, method } = req;
   await middlewares(req, res);
   const route = routes.find(
-    (route) => route.url === url && route.method === method
+    (route) => route.url.test(url) && route.method === method
   );
   if (route) {
-    return route.handler(req, res);
+    const routeParams = req.url.match(route.url)
+    const {query, ...params} = routeParams.groups
+    req.params = params;
+    req.query = query ? getQueryParameters(query) : {}
+    return route.handler(req, res)
   }
   return res.writeHead(404).end("Not found");
 });
